@@ -1,0 +1,264 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Mencegah scroll */
+}
+
+.quiz-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#question {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 10px 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 180px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 12px;
+    font-size: 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#feedback {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.unlocked-container {
+    background: white;
+    padding-top: 0px; /* Kurangi padding atas */
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 1200px;
+    width: 90%;
+    height: 500px; /* Menyesuaikan tinggi agar tidak scroll */
+    overflow-y: auto;
+}
+
+#unlocked-characters {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 3px;
+    justify-content: center;
+    align-items: start;
+}
+
+.unlocked-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: lightblue;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+/* Pop-up utama */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+/* Konten dalam pop-up */
+.popup-content {
+    background: #007bff; /* Warna biru */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tombol reset */
+#popupResetButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: white;
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#popupResetButton:hover {
+    background: #0056b3;
+    color: white;
+}
+
+/* Efek munculnya pop-up */
+.popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Gaya untuk teks tambahan "by Shine" */
+#popupSubtitle {
+    font-size: 16px;
+    color: white;
+    margin-top: 10px; /* Memberikan jarak sedikit antara judul dan teks */
+    font-style: italic; /* Membuat teks lebih menarik */
+}
+
+/* Styling untuk tombol-tombol filter hiragana */
+.hiragana-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    min-width: 40px;
+}
+
+.filter-btn:hover {
+    background: #0056b3;
+}
+
+.filter-btn.active {
+    background: #28a745;
+    transform: scale(1.05);
+}
+
+.filter-btn[data-group="all"] {
+    background: #007bff;
+}
+
+.filter-btn[data-group="all"].active {
+    background: #28a745;
+}
+
+#funModeButton.active {
+    background-color: green;
+    color: white;
+}
+
+.video-container {
+    width: 90%;  /* Video akan menyesuaikan lebar layar */
+    max-width: 400px; /* Maksimal lebar tetap 400px */
+    margin: auto;
+}
+
+video {
+    width: 100%;  /* Buat video menyesuaikan ukuran container */
+    height: auto;
+}
+
+.popup-content {
+    width: 90%;
+    max-width: 350px; /* Maksimal ukuran pop-up */
+    padding: 15px;
+}
+
+@media (max-width: 600px) {
+    .popup-content {
+        max-width: 300px; /* Pop-up lebih kecil di layar HP */
+        padding: 10px;
+    }
+
+    .video-container {
+        max-width: 280px; /* Video lebih kecil di layar kecil */
+    }
+}

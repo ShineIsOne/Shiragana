@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiragana v3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Kuis Hiragana</h1>
+        <div id="score">Soal: 0/104</div>
+        <div id="question" class="fade-in"></div>
+        <input type="text" id="answer" placeholder="Masukkan Jawaban">
+        <button id="submitButton">Submit</button>
+        <button id="resetButton">Reset</button>
+        <button id="funModeButton" style="display: none;">Fun</button>
+        <div id="feedback"></div>
+    </div>
+
+        <!-- Tombol-tombol filter hiragana -->
+        <div class="hiragana-filter-buttons">
+            <button class="filter-btn" data-group="all">Semua</button>
+            <button class="filter-btn" data-group="basic">A</button>
+            <button class="filter-btn" data-group="k">K</button>
+            <button class="filter-btn" data-group="s">S</button>
+            <button class="filter-btn" data-group="t">T</button>
+            <button class="filter-btn" data-group="n">N</button>
+            <button class="filter-btn" data-group="h">H</button>
+            <button class="filter-btn" data-group="m">M</button>
+            <button class="filter-btn" data-group="y">Y</button>
+            <button class="filter-btn" data-group="r">R</button>
+            <button class="filter-btn" data-group="w">W</button>
+            <button class="filter-btn" data-group="fun">Fun</button>
+        </div>
+
+    <!-- Pop-up untuk Kuis Selesai -->
+    <div id="quizPopup" class="popup">
+        <div class="popup-content">
+            <h2 id="popupTitle">Kuis Selesai</h2> 
+            <p id="popupSubtitle">by Shine</p>
+            
+            <!-- Video yang muncul saat kuis selesai dengan ukuran yang disesuaikan -->
+            <div class="video-container">
+                <video id="finishVideo" width="400" controls>
+                    <source src="video/Finish.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hiragana Unlocked Section -->
+    <div class="unlocked-container">
+        <h2>Jawaban</h2>
+        <div id="unlocked-characters"></div>
+    </div>
+    
+    <!-- Tambahkan elemen audio untuk sound effect -->
+    <audio id="correctSound" src="audio/correct.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="audio/wrong.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
